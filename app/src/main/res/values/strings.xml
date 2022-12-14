@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">جهان‌نما</string>
+    <string name="pull_message">دریافت پیام از کامپیوتر</string>
+    <string name="phone_number">شماره تلفن</string>
+    <string name="message_content">متن پیام</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
