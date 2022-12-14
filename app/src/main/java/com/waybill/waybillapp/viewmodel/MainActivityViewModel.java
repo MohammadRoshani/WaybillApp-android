@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class MainActivityViewModel extends AndroidViewModel {
 
-    private WaybillRepository waybillRepository;
+    private final WaybillRepository waybillRepository;
 
     private MutableLiveData<Message> currentMessageLiveData;
     private MutableLiveData<String> serverBaseUrlLiveData;
@@ -112,7 +112,7 @@ public class MainActivityViewModel extends AndroidViewModel {
      * On send message.
      */
     public void onSendMessage(CharSequence phoneNumber, CharSequence content) {
-        Message message = new Message(phoneNumber.toString(),content.toString(),"", Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),false);
+        Message message = new Message(phoneNumber.toString(), content.toString(), "", Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), false);
         saveMessage(message);
     }
 

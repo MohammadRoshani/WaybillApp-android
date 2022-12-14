@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="ارسال پیام"
+    <item
         android:id="@+id/sendFragment"
-        android:icon="@drawable/ic_sms_black_24dp"/>
-    <item android:title="لیست پیام‌ها"
+        android:icon="@drawable/ic_sms_black_24dp"
+        android:title="@string/send_message" />
+    <item
         android:id="@+id/messageListFragment"
-        android:icon="@drawable/ic_featured_play_list_black_24dp"/>
-    <item android:title="درباره‌ما"
+        android:icon="@drawable/ic_featured_play_list_black_24dp"
+        android:title="@string/messages_list" />
+    <item
         android:id="@+id/aboutFragment"
-        android:icon="@drawable/ic_help_outline_black_24dp"/>
+        android:icon="@drawable/ic_help_outline_black_24dp"
+        android:title="@string/about_us" />
 </menu>

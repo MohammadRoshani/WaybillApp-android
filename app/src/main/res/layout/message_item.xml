@@ -24,26 +24,26 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{message.receiverName}"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="@{message.receiverName}" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{message.phoneNumber}"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="@{message.phoneNumber}" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{message.messageContent}"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                android:text="@{message.messageContent}" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

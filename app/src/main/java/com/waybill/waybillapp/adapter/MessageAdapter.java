@@ -1,7 +1,6 @@
 package com.waybill.waybillapp.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -45,10 +44,10 @@ public class MessageAdapter extends ListAdapter<Message, MessageAdapter.MessageH
         return getItem(position);
     }
 
-    class MessageHolder extends RecyclerView.ViewHolder {
+    static class MessageHolder extends RecyclerView.ViewHolder {
 
 
-        private MessageItemBinding messageItemBinding;
+        private final MessageItemBinding messageItemBinding;
 
         private MessageHolder(MessageItemBinding messageItemBinding) {
             super(messageItemBinding.getRoot());

@@ -1,32 +1,25 @@
 package com.waybill.waybillapp.view;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.os.Bundle;
-import android.util.Log;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.waybill.waybillapp.R;
-import com.waybill.waybillapp.databinding.ActivityMainBinding;
 import com.waybill.waybillapp.model.Message;
 import com.waybill.waybillapp.viewmodel.MainActivityViewModel;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding activityMainBinding;
-MainActivityViewModel mainActivityViewModel;
-
     private static final String TAG = "MainActivity";
+    //    ActivityMainBinding activityMainBinding;
+    MainActivityViewModel mainActivityViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +34,7 @@ MainActivityViewModel mainActivityViewModel;
 
 
         mainActivityViewModel.getAllMessages().observe(this, messages -> {
-            for (Message m : messages){
+            for (Message m : messages) {
                 Log.i(TAG, m.toString());
             }
         });

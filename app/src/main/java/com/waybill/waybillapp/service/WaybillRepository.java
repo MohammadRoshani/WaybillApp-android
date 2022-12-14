@@ -13,13 +13,13 @@ import java.util.concurrent.Executors;
 
 public class WaybillRepository {
 
-    private MessageDAO messageDAO;
+    private final MessageDAO messageDAO;
 
     private LiveData<Message> messages;
 
     public WaybillRepository(Application application) {
         WaybillAppDatabase waybillAppDatabase = WaybillAppDatabase.getInstance(application);
-        messageDAO =waybillAppDatabase.getMessageDAO();
+        messageDAO = waybillAppDatabase.getMessageDAO();
     }
 
     public LiveData<List<Message>> getAllMessages() {
@@ -30,17 +30,19 @@ public class WaybillRepository {
         return messageDAO.getMessage(messageId);
     }
 
-    public void addMessage(Message message){
+    public void addMessage(Message message) {
         Executors.newSingleThreadExecutor().execute(() -> {
             messageDAO.addMessage(message);
         });
     }
-    public void updateMessage(Message message){
+
+    public void updateMessage(Message message) {
         Executors.newSingleThreadExecutor().execute(() -> {
             messageDAO.updateMessage(message);
         });
     }
-    public void deleteMessage(Message message){
+
+    public void deleteMessage(Message message) {
         Executors.newSingleThreadExecutor().execute(() -> {
             messageDAO.deleteMessage(message);
         });

@@ -2,26 +2,23 @@ package com.waybill.waybillapp.view;
 
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.waybill.waybillapp.R;
 import com.waybill.waybillapp.adapter.MessageAdapter;
 import com.waybill.waybillapp.databinding.FragmentMessageListBinding;
 import com.waybill.waybillapp.viewmodel.MainActivityViewModel;
-
-import java.util.Objects;
 
 public class MessageListFragment extends Fragment {
 
@@ -36,7 +33,7 @@ public class MessageListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        fragmentMessageListBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_message_list, container, false);
+        fragmentMessageListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_message_list, container, false);
         return fragmentMessageListBinding.getRoot();
     }
 
@@ -44,16 +41,16 @@ public class MessageListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainActivityViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(MainActivityViewModel.class);
+        mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         messageAdapter = new MessageAdapter();
 
-        mainActivityViewModel.getAllMessages().observe(this, messages -> {
+        mainActivityViewModel.getAllMessages().observe(getViewLifecycleOwner(), messages -> {
             messageAdapter.submitList(messages);
         });
 
         fragmentMessageListBinding.setViewmodel(mainActivityViewModel);
 
-        RecyclerView messagesRecyclerView =fragmentMessageListBinding.messagesListView;
+        RecyclerView messagesRecyclerView = fragmentMessageListBinding.messagesListView;
 
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         messagesRecyclerView.setHasFixedSize(true);
@@ -67,7 +64,7 @@ public class MessageListFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                    mainActivityViewModel.deleteMessage(messageAdapter.getCurrentItem(viewHolder.getAdapterPosition()));
+                mainActivityViewModel.deleteMessage(messageAdapter.getCurrentItem(viewHolder.getAdapterPosition()));
             }
         }).attachToRecyclerView(messagesRecyclerView);
 
